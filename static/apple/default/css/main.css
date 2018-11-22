@@ -3448,7 +3448,7 @@ html[lang="hk"]  i.langicon {  background:url("../img/language/hk.png") no-repea
 .dev-blog h3,.dev-blog p{margin: 0; padding: 0; font: inherit;}
 .blog-item .info h3{color: #555; transition: all .3s ease;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .dev-blog .banner {
-    background: #232731 url(../img/city.jpg) no-repeat center center / cover;
+    background: #232731 url('http://raw.githack.com/UnicoinTeaR/static/master/static/apple/default/img/city.jpg') no-repeat center center / cover;
     padding: 0;
     text-align: center;
 }
