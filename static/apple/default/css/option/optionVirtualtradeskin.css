@@ -1,0 +1,69 @@
+a{color:rgb(232, 95, 18); }
+
+.tradeWrap .trade_cur_detail .trade_innerWrap{
+	background: #353945;
+}
+
+.tradeWrap .trading_con .trading_on{
+	color: #78787a
+}
+
+.tradeWrap .trading_con .trading_on span{
+	color: rgba(245, 99, 16, 0.9);
+	font-weight: 600;
+}
+
+.tradeWrap .trading_con .coin_drop_down{
+    color: #777;
+}
+
+.tradeWrap .trading_con .coin_drop_down{
+	background: #1e212b;
+}
+.tradeWrap .trading_con .coin_drop_down b{
+	color: #b7bbbc
+}
+
+.tradeWrap .marklist_trade{
+	background: #1e222b;	
+}
+
+.tradeWrap .marklist_trade .trade_cur_price{
+	color: #777;
+	font-size: 12px;text-align: left;
+}
+
+.tradeWrap .marklist_trade .trade_cur_price span{
+	color:#bbb;
+}
+.tradeWrap .marklist_trade .trade_cur_price span.w-blod{color:#777;}
+.tradeWrap .entrust_form .e_input{
+	border:1px solid #363940;
+}
+
+.tradeWrap .entrust_form .e_input input{
+	color: #b7bbbc;
+}
+
+.tradeWrap .entrust_form .e_input span{
+    color:#b7bbbc;
+}
+.tradeWrap .marklist_trade .button_buy{
+	border:1px solid #13d573;
+	color: #13d573;
+	background: rgba(19, 213, 115, 0.07);
+}
+.tradeWrap .marklist_trade .button_buy:hover{
+	background: #13d573;
+	color: #fff;
+}
+.tradeWrap .marklist_trade .button_sell{
+	border:1px solid #f56310;
+	color: #f56310;
+	background: rgba(245, 99, 16, 0.09);
+}
+.tradeWrap .marklist_trade .button_sell:hover{
+	background: #f56310;
+	color: #fff;
+}
+

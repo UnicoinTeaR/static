@@ -1,0 +1,73 @@
+body {
+    font-family: 'Arial', "Microsoft YaHei", sans-serif;
+}
+ol, ul{margin: 0;}
+h3, .h3{margin: 0;padding: 0;font-size: 16px;}
+
+/*main*/
+.item-title{overflow:hidden;}
+.item-title a,.item-title a:visited{float:right;text-decoration:underline;font-size:12px;color:#262d33;}
+.item-title.border-btm{border-bottom:1px solid #eee;}
+.item-title .f-fr{width:auto!important;color:#999;}
+
+.fullpage-btn{cursor:pointer;}
+.fullpage-btn b{font-weight:normal;text-decoration:underline;}
+.overvies{background:#feffff;border:1px solid #e2e5eb;}
+
+
+.tear {
+    background: url(/static/images/common/virtual_trade.jpg) no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+
+.tear-button {
+    background: url(/static/images/common/button.png) no-repeat;
+    background-size: 200px 40px;
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    left: 44%;
+    top: 320px;
+}
+
+.tear-button-text {
+    position: relative;
+    left: 58px;
+    top: 13px;
+    font-weight: bold;
+}
+
+
+
+.item-title{font-size:14px;}
+.item-title .ng-binding{height: 48px;font-weight: normal; color: #666; padding:12px 0;border-bottom:1px solid #e2e5eb;background: #feffff;}
+.item-con{}
+.tradehistory table td{padding: 4px 8px!important;font-size: 12px;line-height: 1.5;color:#666;border:none}
+
+.listRepeat:hover{background:rgba(232,179,66,0.05);}
+
+
+.main{margin:0;padding-bottom:20px;}
+.main .main-body{padding:0 274px;position:relative;min-height: 346px;}
+.main .main-body .main-left{width:274px;position:absolute;right:0;top:0;
+    /*border-radius: 4px;*/
+}
+.main .main-aside{position: absolute; left: 0; top: 0; width: 274px; padding: 0 4px 8px; }
+.main .main-con{padding:0 4px;}
+
+
+.depths .table tr:hover{cursor:pointer;}
+.depths td:hover{font-weight: bold;}
+.depths td:hover,.depths td:hover span{color:#000000;}
+.depths .table td.magenta:hover span{color:#528bfc;}
+.depths .table td.green:hover span{color:#44c6b2;}
+
+
+
+
+body .table{border:none;margin-bottom: 0;}
+.magenta .gray{color:rgba(245, 99, 16, 0.4);}
+.green .gray{color:rgba(18, 185, 101, 0.55);}
+.table.table-striped th, .table.table-striped td{height: 30px;line-height: 20px;}
+/*loading 闁告柣鍔庨弫锟�*/

@@ -1,0 +1,811 @@
+
+.vipList {
+	width: 100%;
+	height: 53px;
+}
+
+.vipList li {
+	height: 45px;
+	border-right: 1px dashed #ccc;
+	float: left;
+	margin-top: 8px;
+	position: relative;
+	width: calc(16.666% - 1px);
+}
+
+.vipList li span {
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	display: block;
+	font: 14px/25px "寰蒋闆呴粦";
+	color: #666;
+	position: absolute;;
+	left: 0;
+	bottom: 0;
+}
+
+.vipList li:nth-child(6) {
+	border: none;
+}
+
+.vipList li div {
+	width: 70px;
+	height: 27px;
+}
+
+.newbie {
+	width: 13%;
+}
+
+.newbie div {
+	background-color: #528bfc;
+	color: #fff;
+	font: 18px/28px "寰蒋闆呴粦";
+	text-align: center;
+	border-radius: 10px;
+	position: absolute;;
+	left: 17%;
+	top: -8px;
+}
+.vipOne .vipOneIcon {
+	background: url(../../img/KYC/icon.png) no-repeat -431px -6px;
+	position: absolute;
+	left: 28%;
+	top: -8px;
+}
+.vipTow .vipTowIcon {
+	position: absolute;
+	background: url(../../img/KYC/icon.png) no-repeat -430px -76px;
+	left: 28%;
+	top: -8px;
+}
+
+.vipThrss .vipThrssIcon {
+	position: absolute;
+	background: url(../../img/KYC/icon.png) no-repeat -430px -126px;
+	left: 28%;
+	top: -8px;
+}
+
+.vipFour .vipFourIcon {
+	position: absolute;
+	background: url(../../img/KYC/icon.png) no-repeat -430px -186px;
+	left: 28%;
+	top: -8px;
+}
+
+.vipFive .vipFiveIcon {
+	position: absolute;
+	background: url(../../img/KYC/icon.png) no-repeat -430px -256px;
+	left: 26%;
+	top: -8px;
+}
+
+/* 
+.privateOrder {
+	width: 12%;
+}
+
+.privateOrder .privateOrderText {
+	width: 71%;
+	height: 28px;
+	background-color: #528bfc;
+	text-align: center;
+	font: 18px/28px "寰蒋闆呴粦";
+	color: #fff;
+	border-radius: 10px;
+	position: absolute;
+	left: 20%;
+	top: -8px;
+}
+*/
+
+.vipProgressBay {
+	width: 100%;
+	height: 10px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+
+.vipProgressBay .vipBarBlue {
+	height: 100%;
+	width: 50px;
+	background-color: #528bfc;
+}
+
+.vipProgressBay  .vipRound {
+	width: 18px;
+	height: 18px;
+	background-color: #528bfc;
+	border-radius: 50%;
+	position: absolute;
+	top: -4px;
+	left: 49px;
+	cursor: pointer;
+}
+
+.vipExplainArea {
+	width: 100%;
+	height: 308px;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+.vipExplainAreaWrap {
+	width: 98%;
+	height: 100%;
+	background-color: #fff;
+	margin: 0 1%;
+}
+
+.vipExplainAreaContent {
+	width: 100%;
+	height: 278px;
+	background-color: #fff;
+	padding: 15px 0;
+}
+
+.vipExplainAreaContent .vipContentLeft {
+	width: calc(50% - 1px);
+	height: 100%;
+	border-right: 1px solid #ccc;
+	position: relative;
+}
+
+
+.vipExplainAreaContent .vipContentRight {
+	width: 50%;
+	height: 100%;
+}
+
+.vipContentLeft .wIcon {
+	width: 48%;
+	height: 165px;
+	background: url(../../img/KYC/vip.png) no-repeat;
+	position: absolute;
+	left: 4%;
+	top: 70px;
+}
+
+.vipContentLeft .wIcon span {
+	width: 146px;
+	height: 39px;
+	display: block;
+	font: 21px/39px "寰蒋闆呴粦";
+	color: #fff;
+	text-align: center;
+	position: absolute;;
+	left: 22px;
+	top: 107px;
+}
+
+.vipIconRight {
+	width: 52%;
+	height: 213px;
+	position: absolute;;
+	right: 0;
+	top: 0;
+}
+
+.vipIconRight .vipPhone {
+	width: 100%;
+	height: 41px;
+	font: 18px/41px "寰蒋闆呴粦";
+	color: #528bfc;
+	position: absolute;
+	left: 3%;
+	top: 86px;
+}
+
+.vipPhone span {
+	margin-left: 2%;
+}
+
+.vipPhone  b {
+	margin-left: 8%;
+	text-align: center;
+}
+
+.vipIconRight .vipIntegral {
+	width: 100%;
+	height: 41px;
+	font: 16px/41px "寰蒋闆呴粦";
+	position: absolute;
+	left: 3%;
+	top: 125px;
+}
+
+.vipIconRight .vipIntegral span {
+	color: #666;
+}
+
+.vipIconRight .vipIntegral  b {
+	color: #528bfc;
+}
+
+.vipHelp {
+	width: 52%;
+	height: 72px;
+	position: absolute;;
+	right: 0;
+	bottom: 0;
+}
+
+.vipHelp ul {
+	width: 80%;
+	height: 57px;
+	position: absolute;
+	bottom: 8px;
+	right: 9%;
+}
+
+.vipHelp ul li {
+	width: 45%;
+	height: 18px;
+	float: left;
+	margin-right: 4%;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.vipHelp ul li span {
+	width: 18px;
+	height: 18px;
+	background: url(../../img/KYC/icon.png) no-repeat -432px -385px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.vipHelp ul li a {
+	padding-left: 20px;
+	font: 14px/18px "寰蒋闆呴粦";
+	color: #528bfc;
+	text-decoration: underline;
+}
+
+/*修改积分样式*/
+.vipExplainArea {
+	height:250px;
+}
+.vipExplainAreaContent {
+	height:220px;
+}
+.vipExplainAreaContent .vipContentLeft {
+	width: 100%;
+	border:0;
+}
+.vipContentLeft .wIcon {
+	top:12%;
+	left:20%;
+}
+
+.vipIconRight {
+	height:175px;
+}
+.vipIconRight .vipPhone {
+	top:50px;
+}
+.vipIconRight .vipIntegral {
+	left:5%;
+	top:85px;
+}
+.vipHelp{
+	bottom:12%;
+}
+.vipHelp ul{
+	width:86%;
+}
+.vipHelp ul li {
+	width:32%;
+	margin-right:0;
+}
+
+
+.vipContentRight {
+	width: 50%;
+	height: 100%;
+}
+
+.vipContentRight dl {
+	width: 91%;
+	height: 194px;
+	padding-top: 21px;
+	padding-left: 9%;
+}
+
+.vipContentRight dl dt {
+	width: 100%;
+	height: 20px;
+	font: 18px/20px "寰蒋闆呴粦";
+	color: #333;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.vipContentRight dl  dd {
+	width: 100%;
+	height: 40px;
+}
+
+.vipContentRight dl  dd ul {
+	width: 100%;
+	height: 100%;
+}
+
+.vipContentRight dl  dd ul li {
+	width: 40%;
+	height: 100%;
+	font: 14px/40px "寰蒋闆呴粦";
+	color: #666;
+	text-align: center;
+	padding-left: 8%;
+	float: left;
+	position: relative;
+}
+
+.vipContentRight dl  dd ul li span {
+	width: 32px;
+	height: 32px;
+	background: url(../../img/KYC/icon.png) no-repeat -431px -323px;
+	position: absolute;
+	left: 0;
+	top: 5px;
+}
+
+.btnPay {
+	width: 100%;
+	height: 40px;
+	padding-left: 10%;
+}
+
+.btnPay .erpay, .btnPay .erthPay {
+	width: 38%;
+	height: 100%;
+	background-color: #528bfc;
+	float: left;
+}
+
+.btnPay .erthPay {
+	margin-left: 8%;
+}
+
+.btnPay a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	font: 14px/40px "寰蒋闆呴粦";
+	color: #fff;
+	text-align: center;
+}
+
+.achieveWrap {
+	width: 100%;
+}
+
+.achieveEffect {
+	width: 100%;
+	height: 580px;
+}
+
+.achieveEffect p {
+	width: 99%;
+	height: 50px;
+	font: 14px/50px "寰蒋闆呴粦";
+	color: #000;
+	text-align: left;
+	margin-top: 30px;
+	padding-left: 1%;
+}
+
+.tabaChieveEffect {
+	width: 100%;
+	height: 290px;
+}
+
+.tabaChieveEffect>li {
+	float: left;
+	height: 100%;
+}
+
+.tabaChieveEffect>li ul li:nth-child(even) {
+	height: 30px;
+	background-color: #fafafa;
+	color: #666;
+	font: 14px/30px "寰蒋闆呴粦";
+}
+
+.tabaChieveEffect>li ul li:nth-child(odd) {
+	height: 40px;
+	background-color: #eee;
+	color: #666;
+	font: 14px/40px "寰蒋闆呴粦";
+}
+
+.tabaChieveEffect>li ul li:nth-child(1) {
+	background-color: #f0f2f4;
+	color: #333;
+}
+
+.tabaChieveEffect .rankList {
+	width: 12%;
+	text-align: center;
+}
+
+.tabaChieveEffect .rankList ul {
+	width: 100%;
+	height: 100%;
+}
+
+.tabaChieveEffect .rankList ul li {
+	width: 100%;
+	text-align: center;
+}
+
+.achieveList {
+	width: 36%;
+	text-align: center;
+}
+
+.tabaChieveEffect .factorage {
+	width: 28%;
+	height: 245px;
+	text-align: center;
+	position: relative;
+}
+
+.factorage .backColorWhit {
+	width: 100%;
+	height: 210px;
+	position: relative;
+}
+
+.factorage .backColorWhit div {
+	width: 100%;
+	height: 210px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+	background-color: #fafafa;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.factorage .backColorWhit div span {
+	width: 100%;
+	display: block;
+}
+
+.factorage .backColorWhit div span:nth-child(even) {
+	height: 40px;
+}
+
+.factorage .backColorWhit div span:nth-child(odd) {
+	height: 30px;
+}
+
+.factorage ul li:nth-child(1) {
+	width: 100%;
+	height: 40px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.factorage ul li:nth-child(3) {
+	width: 100%;
+	height: 40px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	position: absolute;;
+	left: 0;
+	bottom: -75px;
+}
+
+.getRate {
+	width: 24%;
+	height: 100%;
+}
+
+.getRate ul {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.drawNorm {
+	width: 17%;
+	height: 100%;
+	text-align: center;
+	display: none;
+}
+
+.effectSpacialState {
+	width: calc(100% - 2px);
+	height: 158px;
+	border: 1px solid #528bfc;
+	background-color: #f7f6fc;
+	margin-top: 43px;
+}
+
+.effectSpacialState dl {
+	width: 100%;
+	height: 123px;
+	padding-left: 2%;
+	padding-top: 35px;
+}
+
+.effectSpacialState dl  dt {
+	font: 14px/35px "寰蒋闆呴粦";
+	color: #000;
+}
+
+.effectSpacialState dl  dd {
+	font: 14px/24px "寰蒋闆呴粦";
+	color: #666;
+}
+
+.operator {
+	width: 16%;
+	text-align: center;
+}
+
+.achieveCode {
+	width: 39%;
+	text-align: center;
+}
+
+.declareAch {
+	width: 45%;
+	text-align: center;
+}
+
+.periodEffect {
+	height: 280px;
+}
+
+.referAchiveTop {
+	width: 100%;
+	height: 26px;
+	margin-bottom: 18px;
+}
+
+.referAchiveTitle {
+	font: 14px/26px "寰蒋闆呴粦";
+	color: #000;
+	width: 11%;
+	height: 100%;
+	display: block;
+}
+
+.period {
+	width: 40%;
+	height: 100%;
+}
+
+.period span {
+	font: 14px/26px "寰蒋闆呴粦";
+	color: #000;
+}
+
+.period  input {
+	width: 30%;
+	height: 24px;
+	border: 1px solid #ccc;
+	display: inline-block;
+}
+
+.btnRest {
+	width: 5%;
+	height: 21px;
+	background-color: #528bfc;
+	color: #fff;
+	position: relative;
+	text-align: left;
+	padding-left: 5%;
+	padding-top: 5px;
+	margin-top: 3px;
+	cursor: pointer;
+}
+
+.restIcon {
+	width: 33px;
+	height: 21px;
+	display: block;
+	background: url(../../img/KYC/icon.png) no-repeat -143px -318px;
+	position: absolute;
+	left: 13%;
+	top: 5px;
+}
+
+.achieveActive {
+	height: 490px;
+}
+
+.achieveActive p {
+	width: 99%;
+	height: 50px;
+	font: 14px/50px "寰蒋闆呴粦";
+	color: #000;
+	text-align: left;
+	margin-top: 30px;
+	padding-left: 1%;
+}
+
+/*.boxLeft {
+	height: 460px;
+}*/
+
+.table {
+	width: 100%;
+	height: 190px;
+}
+
+.achieveQuery {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.achieveQuery tr {
+	text-align: center;
+}
+
+.achieveQuery td:nth-child(1) {
+	width: 17%;
+}
+
+.achieveQuery td:nth-child(2) {
+	width: 73%;
+}
+
+.achieveQuery td:nth-child(3) {
+	width: 10%;
+}
+
+.achieveQuery  tbody tr:nth-child(odd) {
+	height: 30px;
+	background-color: #fafafa;
+	color: #666;
+	font: 14px/30px "寰蒋闆呴粦";
+}
+
+.achieveQuery tbody tr:nth-child(even) {
+	height: 40px;
+	background-color: #eee;
+	color: #666;
+	font: 14px/40px "寰蒋闆呴粦";
+}
+
+.achieveQuery .tabTitle {
+	height: 40px;
+	font: 14px/40px "寰蒋闆呴粦";
+	background-color: #f0f2f4;
+	color: #333;
+}
+
+/*积分等级样式修改*/
+.vipGradeWrap {
+	height:360px;
+}
+.achieveEffect {
+	height: 460px;
+}
+.achieveEffect p {
+	margin-top:0px;
+}
+.tabaChieveEffect {
+    width: 100%;
+    height: 260px;
+}
+.effectSpacialState {
+	height:130px;
+    margin-top: 10px;
+}
+.effectSpacialState dl {
+	height:100px;
+	padding-top:20px;
+}
+.achieveActive p {
+	margin-top:0px;
+}
+.achieveActive {
+	height:390px;
+}
+.referAchiveTop {
+    width: 99%;
+    padding-left:1%;
+}
+.wrapContent {
+    height: 1220px;
+}
+
+
+.footnote {
+	width: 100%;
+	height: 30px;
+	background-color: #fafafa;
+	margin-top: 20px;
+}
+
+.footnote .footnoteContent {
+	width: 100%;
+	height: 26px;
+	margin-top: 40px;
+}
+
+.pervPage, .nextPage {
+	width: 5%;
+	height: 24px;
+	border: 1px solid #ccc;
+	font: 12px/24px "寰蒋闆呴粦";
+	color: #666;
+	text-align: center;
+	cursor: pointer;
+}
+
+.pervPage:hover, .nextPage:hover, .footnoteListMain li:hover {
+	color: #528bfc;
+	border: 1px solid #528bfc;
+}
+
+.footnoteListMain  li.active {
+	background-color: #337ab7;
+}
+
+.pervPage {
+	margin-right: 10px;
+}
+
+.footnoteListMain {
+	float: right;
+}
+.pad_left{
+	padding-left:15px;
+}
+.pad_left li{
+	border:1px solid #ccc;
+}
+.pad_left li.active{
+	background-color:#528bfc;
+
+}
+.pad_left li.active a{
+	color:#fff;
+}
+.footnoteListMain  li {
+	float: left;
+	width: 40px;
+	height: 24px;
+	border: 1px solid #ccc;
+	font: 12px/24px "寰蒋闆呴粦";
+	color: #666;
+	text-align: center;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.footnoteListMain  li.changeColorBlue {
+	border: 1px solid #528bfc;
+	color: #528bfc;
+}
+
+.tip_alert2 .tip_message {
+	width: 400px;
+	display: inline-block;
+	z-index: 10009;
+	background-color: #FFFFFF;
+	left: calc(50% - 200px);
+	top: calc(50% - 100px);
+	border: 1px solid #eeeeee;
+	min-height: 200px;
+	position: fixed;
+	top: calc(50% - 100px);
+	left: calc(50% - 200px);
+}
+
+
+
+
+

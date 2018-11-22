@@ -1,0 +1,40 @@
+
+/*bills-box*/
+.modal-bills{}
+.bills-box{}
+
+
+/*deposit-box*/
+.deposit-box{}
+.payin-box{}
+.payin-box img{width: 200px;}
+
+.payin-box .addr{margin: 20px 0;  border-radius: 30px; overflow: hidden; border: 1px solid #f2f3f5;position: relative; display: inline-block;}
+.payin-box .addr span{font-size: 12px; color: #666; position: relative;}
+.payin-box .addr p{float: left;height: 40px;line-height:40px;margin-bottom: 0;}
+.payin-box .addr p:nth-child(1){color: #333;padding: 0 10px 0 15px; background: rgba(0,0,0,.01);}
+.payin-box .addr p:nth-child(2){}
+.payin-box .addr .payinaddress{font-size: 16px;color: #528bfc;padding: 0 20px;}
+.payin-box .addr .adds-copy{padding: 8px 24px;margin: 6px 6px 0 6px; width: auto;}
+
+/*withdraw-box*/
+.withdraw-box{}
+
+/*modal-Login-password*/
+.modal-Login-password{}
+
+/*Fund-password*/
+.modal-Fund-password{}
+.modal-Fund-password .content-form .radio{}
+
+/*modal-google-setting*/
+.modal-google-setting{}
+.modal-google-setting .prompt{padding:8px 32px;}
+.google-settingimg{text-align: center;    background: rgba(243, 247, 255, 0.41); padding: 10px;}
+.google-settingimg img{width: 160px;}
+
+
+.withdrawal-address-box{margin-top: 30px;}
+.withdrawal-address-box .inner .delete{position: absolute;top: 12px;right: 12px;}
+.address-box{}
+.address-box:after{content: "";clear: both;}

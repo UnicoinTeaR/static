@@ -1,0 +1,24 @@
+/*.simpleAlert{position: fixed;z-index: 1000;}*/
+/*.simpleAlertShelter{position: fixed;width: 100%;height: 100%;top:0;left:0;background-color: #000;opacity: 0.3;filter:alpha(opacity=30);}*/
+/*.simpleAlertBody{position:fixed;display: none;width: 100%;height: 50vh;bottom:0;left:0;margin:0;opacity:0;border-top: 1px solid rgba(18, 19, 26, 0.45);background-color: #fff;}*/
+/*.simpleAlertBodyClose{ position: absolute; width: 35px; height: 35px; top: -35px; right: 10px; padding: 5px; background: rgba(0, 0, 0, 0.1);*/
+    /*cursor: pointer;}*/
+/*.simpleAlertBodyClose.icon-cuo:before{ content: "\e604"; left: 9px; top: 6px; position: absolute; }*/
+/*.simpleAlertBodyContent{position: absolute;top:30%;width:96%;height:48px;overflow-y:auto;left: 2%;text-align: center;font-size: 18px;font-weight: 600;color: #333;}*/
+/*.simpleAlertBtn{position:absolute;width: 70px;height: 34px;top:60%;border: 1px solid #bfbfbf;cursor:pointer;border-radius: 5px;color: #fff;font-size: 16px;}*/
+/*.simpleAlertBtn1{background-color: #826289;left: 25%;}*/
+/*.simpleAlertBtn2{background-color: #f7f7f7;color: #333;right: 25%;}*/
+/*.onlyOne{width: 200px;height: 36px;left: 138px;}*/
+
+.simpleAlert{position: fixed;z-index: 1000;}
+.simpleAlertShelter{position: fixed;width: 100%;height: 100%;top:0;left:0;background-color: #000;opacity: 0.3;filter:alpha(opacity=30);}
+.simpleAlertBody{position:fixed;display: none;top:50%;left: 0;  right: 0; padding: 0; margin: 0 auto;opacity:0;}
+.simpleAlertBodyClose{    position: absolute; width: 35px; height: 35px; top: 0px; z-index: 4; right: 38px; padding: 5px; background: rgba(0, 0, 0, 0.1); cursor: pointer;}
+.simpleAlertBodyClose.icon-cuo:before{ content: "\e604"; left: 9px; top: 6px; position: absolute; }
+.simpleAlertBodyContent{padding:15px 20px 25px;border: 1px solid rgba(0, 0, 0, 0.41);background-color: #fff;border-radius: 4px;position: absolute;width:calc(100% - 30px); margin-left: 15px;text-align: center;font-size: 18px;font-weight: 600;color: #333;}
+.simpleAlertBtn{position:absolute;width: 70px;height: 34px;top:60%;border: 1px solid #bfbfbf;cursor:pointer;border-radius: 5px;color: #fff;font-size: 16px;}
+.simpleAlertBtn1{background-color: #826289;left: 25%;}
+.simpleAlertBtn2{background-color: #f7f7f7;color: #333;right: 25%;}
+.onlyOne{width: 200px;height: 36px;left: 138px;}
+
+

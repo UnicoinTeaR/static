@@ -1,0 +1,609 @@
+.personal{}
+
+/*panel--------------------------------------------------------------*//*panel--------------------------------------------------------------*/
+.user-assets .grid-title {
+    border-left:1px solid #ececec;
+    border-right:1px solid #ececec;
+}
+.user-assets .th,
+.user-assets .td {
+    text-align: center;
+    border-bottom: 1px solid #f8f8f8;
+}
+.user-assets .theader .cell {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 8px 16px;
+}
+.user-assets .td .cell {
+    padding: 4px 4px;
+}
+.user-assets .td .cell b{display: inline-block;
+    text-indent: 40px;}
+.user-assets .td:first-child .cell{}
+.user-assets .td:last-child .cell{}
+.user-assets .td:last-child .cell a:nth-child(1){}
+.user-assets .td:last-child .cell a:nth-child(2){}
+.user-assets .tbody {
+    border: 1px solid #EEE;
+    border-radius: 0 0 6px 6px;
+    background: #FFF;
+    min-height: 120px;
+    height: auto;
+    padding-bottom:20px;
+    transition: all 0.5s;
+}
+.user-assets .tbody div.tr { margin:0px 20px; border-bottom: 1px solid #ddd;transition: all 0.3s ease;}
+.user-assets .tbody div.tr:last-child { border-bottom:none; }
+
+
+.user-assets .cointTag {
+    width: 250px;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 16px;
+    position: relative;
+}
+.user-assets .cointTag .cell{padding: 0;}
+.user-assets .theader .cointTag .cell {padding: 0px;}
+.user-assets .theader .action .cell{padding: 0px;}
+.user-assets .cointTag img {
+    width: 30px;
+    margin-right: 5px;
+    margin-top: -6px;
+    position: absolute;
+}
+.user-assets .cointTag .act {
+    font-size: 14px;
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    margin-top: -7px;
+    display: none;
+}
+.user-assets .raphael-circle{height: 52px;}
+.user-assets .tr:hover .cointTag .act {
+    display: inline-block;
+}
+.user-assets .tr.hide-coin {
+    background: #eee;
+}
+.user-assets .total,
+.user-assets .redeemable,
+.user-assets .usable,
+.user-assets .frozen,
+.user-assets .loan {
+    /*width: 10%;*/
+}
+.user-assets .proportion {
+    width: 120px;
+}
+.user-assets .proportion .cell {
+    /*padding-right: 25px;*/
+}
+.user-assets .action {
+    width: 29%;
+}
+.user-assets .progress-bar-wraper,
+.user-assets .progress-bar-inner {
+    height: 5px;
+}
+.user-assets .progress-text {
+    top: -5px;
+}
+
+
+
+/*panel--------------------------------------------------------------*/
+.account-all {
+    background: #fff ;
+    border-radius: 3px;
+    padding: 20px 10px;
+}
+
+
+.account-all .rd .onffflist, .account-all .rd .iconlist { float:right; text-align:center; }
+.account-all .rd  a { float:left; margin:0px 15px 0 0; color:#656f77; text-align:center; cursor: pointer; text-decoration: none;
+    font-size: 12px;
+    font-weight: normal;
+}
+.account-all .rd  a:hover { color:#528bfc; }
+.account-all .rd .iconlist a:hover  i { border-color:#528bfc;color: #528bfc; }
+
+.account-all .rd .iconlist i {display: inline-block;width:24px; height:24px;line-height: 22px;  text-align: center; border:1px solid #656f77; border-radius: 100%;  margin:0px auto 5px auto; }
+.account-all .rd .iconlist i.icon-shouji{font-size: 14px;line-height: 20px;}
+.account-all .rd .iconlist i.icon-mima{font-size: 12px;}
+.account-all .rd .iconlist .on i { color:#528bfc; border:1px solid #528bfc; }
+.account-all .rd .iconlist .off i { color:#656f77; border:1px solid #656f77; }
+
+.user-card .onffflist { float:right; margin-top:20px; font-size:12px; }
+
+.user-card .onffflist a { text-align: center; display:inline-block; margin-right:20px; color:#c9c9c9;  }
+.user-card .onffflist i { background:#FFF; width:32px; height:16px; border-radius:30px; border:1px solid #DDD; display:block; position: relative;    margin:0px auto 6px auto; }
+.user-card .onffflist i:before { width:14px; height:14px; background:#FFF; border-radius:100%; display:block; content:""; position: absolute; box-shadow: 0px 0px 1px rgba(0,0,0,0.2); }
+.user-card .onffflist .on i { background:#6b9f6c;  border:1px solid #6b9f6c; }
+.user-card .onffflist .on i:before { right:0px;   }
+.user-card .onffflist .off i { background:#FFF;  border:1px solid #ddd; }
+.user-card .onffflist .off i:before {   left:0px;   }
+
+.table-morelist { text-align: center; padding: 10px 0px; }
+.table-morelist a { background-color: #f7f8fd; border:1px solid #e2e2e5;  color:#858DA3; text-align: center; cursor: pointer;
+    width:30px; height:30px; font-size: 24px; font-weight: bold; font-family: Arial; display: block;
+    margin: 0px auto; text-align: center; line-height:28px; border-radius:100%; text-decoration: none;  }
+.table-morelist a i { font-size:20px;   }
+.table-morelist a:hover { border:1px solid #528bfc; color:#528bfc; text-decoration: none; }
+
+.user-card {
+    background: #fff;
+    border-radius: 4px;
+}
+.user-card .card-title {
+    background: #FFF;
+    padding: 0px 0 10px 0;
+    position: relative;
+    border-radius: 6px 6px 0 0;
+}
+.user-card .user-info {
+    text-align: left;
+    padding: 0;
+}
+.user-card .user-info .avatar {
+    width: 64px;
+    height: 64px;
+    margin:0 10px 0 0;
+    float: left;
+    z-index: 10;
+    cursor: pointer;
+    display: none;
+}
+.user-card  .avatar{
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(245, 99, 16, 0.53)), to(rgb(51, 136, 253)));
+    background: -webkit-linear-gradient(top, rgba(245, 99, 16, 0.53) 0%, rgb(51, 136, 253) 100%);
+    background: -moz-linear-gradient(top, rgba(245, 99, 16, 0.53) 0%, rgb(51, 136, 253) 100%);
+    background: linear-gradient(to bottom, rgba(245, 99, 16, 0.53) 0%, rgb(51, 136, 253) 100%);
+}
+.user-card  .avatar img {
+    transition: all 0.2s;;
+    -moz-transition: all 0.2s;; /* Firefox 4 */
+    -webkit-transition: all 0.2s;; /* Safari 和 Chrome */
+    -o-transition: all 0.2s;; /* Opera */
+    opacity: 0.5;
+}
+
+.user-card .avatar:hover img {
+    transform: scale(1.1,1.1);
+    transform:scale(1.1,1.1);
+    -ms-transform:scale(1.1,1.1);	/* IE 9 */
+    -moz-transform:scale(1.1,1.1);	/* Firefox */
+    -webkit-transform:scale(1.1,1.1); /* Safari 和 Chrome */
+    -o-transform:scale(1.1,1.1); 	/* Opera */
+}
+.user-card .user-info .info {
+    font-size: 14px;
+    padding: 0 0 0 16px;
+    position: relative;
+    margin-left: 0;
+    max-width: 100%;
+}
+.user-card .user-info .info > div {  padding: 0;}
+.user-card .user-info .info   div.user-name {
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+.user-card .user-info .togglebutton-bx{display: inline-block;margin-right: 20px;}
+.togglebutton label{color: #888; font-size: 12px;}
+.user-card .user-info .actions-group {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+.user-card .user-info .actions-group a {
+    cursor: pointer;
+    border: 1px solid #EEE;
+    color: #AAA;
+    border-radius: 4px;
+    width:30px;
+    height:30px;
+    text-align:center;
+    line-height:28px;
+    display:inline-block;
+    overflow:hidden;
+    vertical-align: middle;
+}
+.user-card .user-info .actions-group a i {
+    font-size:12px;
+    display:block;
+}
+.user-card .user-info .actions-group a.on,
+.user-card .user-info .actions-group a:hover {
+    border: 1px solid #528bfc;
+    color: #528bfc;
+    text-decoration: none;
+}
+.user-card .user-memo {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 0px;
+    display: flex;
+}
+.user-type-3 .user-memo {
+    color: #888;
+}
+.user-card .user-name {
+
+}
+.user-card .assets-info-right {
+    margin-top: 0px;
+    text-align: right;
+}
+.user-memo .is-sim {
+    font-weight: normal;
+    font-size: 12px;
+    color: #e39c1c;
+}
+.user-card .totalasset,
+.user-card .netasset-text {
+    display: inline-block;
+    text-align: right;
+    position: relative;
+    margin-right: 20px;
+    vertical-align: sub;
+}
+
+.user-card .assets-chart {
+    padding-top: 20px;
+    float:right;
+    transition: all 0.2s;
+    display: none;
+}
+.user-card .user-info  a.abtn {
+    width:auto;
+    padding:0px 10px;
+    font-size:12px;
+    color:#FFF;
+    position: relative;
+}
+
+.user-card .user-info  a.abtn:hover {
+    color:#FFF;
+}
+
+.user-card .user-info  a.abtn i {
+    display:inline-block;
+    border:1px solid #FFFFFF;
+    border-radius: 100%;
+    width:18px;
+    height:18px;
+    line-height:15px;
+    vertical-align: middle;
+    margin-right:5px;
+    margin-top:-2px;
+    font-weight: 400;
+    position: relative;
+}
+.user-card .user-info  a.abtn:before {
+    border-radius: 10px;
+    position: absolute;
+    left:4px;
+    top:3px;
+    display: block;
+    width:12px;
+    height:12px;
+    z-index: 5;
+    line-height: 12px;
+    text-decoration: none;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.user-card .user-info  a.abtn.abtn-add:before {
+    content: "+";
+    background:#528bfc;
+}
+
+.user-card .user-info  a.abtn.abtn-less:before {
+    content: "-";
+    background:#3dc18e;
+}
+
+.user-card .user-info  a.abtn.abtn-add {
+    border-color:#528bfc ;
+    background:#528bfc;
+}
+
+.user-card .user-info  a.abtn.abtn-add:hover, .user-card .user-info  a.abtn.abtn-add:hover:before  {
+    background:#f19e13;
+}
+.user-card .user-info  a.abtn.abtn-less, .user-card .user-info  a.abtn.abtn-account {
+    border-color:#EEE;
+    background:#FFF;
+    color: #555555;
+}
+.user-card .user-info  a.abtn.abtn-account:hover {
+    border-color:#528bfc;
+    color: #528bfc;
+}
+.user-card .user-info  a.abtn.abtn-less:hover, .user-card .user-info  a.abtn.abtn-less:hover:before  {
+    background:#28aa78;
+}
+
+.card-body{}
+.vue-grid .theader{border-top-left-radius: 4px; border-top-right-radius: 4px;}
+
+/* CSS Document */
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.hide {
+    display: none;
+}
+
+
+.bk-assets .num{ float:right;font-family:"arial"; text-align:right; color:#555;font-size: 18px;}
+.bk-assets .num em{font-size:30px; font-weight:700;color:#eb5d3c;}
+
+
+.language .panel-nav ul li a:hover {
+    text-indent: 0px;
+}
+
+.s-user header a:hover { text-decoration: none; }
+.s-user .centre table, .s-user .right table { width: 100%; }
+
+
+
+.btn-second {
+    background-color: #3dc18e!important;
+    border-color: #3dc18e!important;
+    color: #fff!important;
+}
+
+.panel-content .menu-box li {
+    position: relative;
+}
+
+
+.panel-content h2.mt0 { font-size:22px;
+    color: #333333; }
+
+
+.panel-content .centre {
+    float: left;
+    width: 100%;
+}
+.panel-content .centre-content {
+    padding: 20px 350px 20px 230px;
+}
+
+
+.panel-content .right {
+    float: left;
+    margin-left: -350px;
+    width: 350px;
+    padding: 20px;
+}
+
+
+
+/*zz*/
+.user-card .user-info-left{}
+.user-card .assets-info-right{
+    position: absolute;
+    top: 0px;
+    right: 16px;
+}
+.user-card .assets-info-safe{display: inline-block;}
+.vue-asset-drop-hd.bill-asset-drop{background: none;padding: 8px 0 0;  }
+.vue-asset-drop-hd.bill-asset-drop .drop{
+    position: relative;
+    display: inline-block;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    vertical-align: super;
+}
+.vue-asset-drop-hd.bill-asset-drop .drop .drop-box{
+    position: absolute;
+    right: 0px;
+    width: 120px;
+    padding-top: 10px;
+    z-index: 1;
+}
+.vue-asset-drop-hd.bill-asset-drop .drop ul{margin: 0;}
+.vue-asset-drop-hd.bill-asset-drop .drop .drop-box ul li{
+    padding: 10px 20px;
+    height: 40px;
+    line-height: 16px;
+}
+
+.exx-tips{color: #aaa;}
+
+#hideon{
+    display:none !important;
+}
+
+
+/*资产页最小高度*/
+.page-wrapper .vue-main{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.01), 0 3px 1px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.08);
+}
+
+.s-user .content .pagination{
+    float: right;
+}
+.s-user .popbottom-table .content:after{
+    content:"";
+    display: block;
+    clear: both;
+    font-size: 0;
+    height:0;
+}
+
+
+/*资产页 cursor*/
+.self-finance .tbody .tr{
+    cursor: pointer;
+}
+
+
+#personfinance-inner{
+    transition:all 0.5s linear;
+}
+.account-all{
+    transition:all 0.5s linear;
+}
+
+
+/*地址*/
+.modify_tab{
+    padding-left:20px;
+}
+
+
+
+/*2012.12.03资产、个人中心修改---------------*/
+.text-yellow {
+    color: #f8d14a !important;
+}
+.text-green {
+    color: #44c6b2 !important;
+}
+.text-red {
+    color: #dd4b39 !important;
+}
+.modify1203 .vue-asset-drop-hd.bill-asset-drop {
+    background: none;
+    padding: 0px 0 0;
+}
+
+
+
+
+
+/*accounts.css--------*/
+
+/*bills-box*/
+.modal-bills{}
+.bills-box{}
+
+
+/*deposit-box*/
+.deposit-box{}
+.payin-box{padding: 10px 0px 30px 0px;text-align: center;}
+.payin-box img{width: 200px;}
+
+.payin-box .addr{margin: 20px 0;  border-radius: 30px; overflow: hidden; border: 1px solid #f2f3f5;position: relative; display: inline-block;width: 110%;}
+.payin-box .addr span{font-size: 12px; color: #666; position: relative;}
+.payin-box .addr p{float: left;height: 40px;line-height:40px;margin-bottom: 0;}
+.payin-box .addr p:nth-child(1){color: #333;padding: 0 10px 0 15px; background: rgba(0,0,0,.01);}
+.payin-box .addr p:nth-child(2){}
+.payin-box .addr .payinaddress{font-size: 16px;color: #528bfc;padding: 0 20px;}
+.payin-box .addr .adds-copy{padding: 8px 24px;margin: 6px 6px 0 6px; width: auto;float: right;}
+
+/*withdraw-box*/
+.withdraw-box{}
+
+/*modal-Login-password*/
+.modal-Login-password{}
+
+/*Fund-password*/
+.modal-Fund-password{}
+.modal-Fund-password .content-form .radio{}
+
+/*modal-google-setting*/
+.modal-google-setting{}
+.modal-google-setting .prompt{padding:8px 32px;min-height: 128px;}
+.google-settingimg{text-align: center;    background: rgba(243, 247, 255, 0.41); padding: 10px;}
+.google-settingimg img{width: 160px;}
+
+
+
+
+
+
+/*个人中心*/
+.personal-safeinfo{border-bottom: 2px dashed #e2e5eb;    margin: 0px 18px;
+    padding: 10px 0 30px;}
+.personal-info-left{width: 280px;text-align: left;float: left;}
+.personal-info-right{width: calc(100% - 280px);float: left;}
+.Safety-score{}
+.Safety-score .raphael-circle-text{color: #999; display: inline-block; line-height: 100px; margin-right: 20px; padding: 0 8px;}
+.Safety-score .raphael-circle{display: inline-block; vertical-align: middle;}
+.Safety-score-info{margin-top: 24px;line-height: 26px;font-weight: 400;}
+.Safety-score-info .text-yellow{font-weight: bold;}
+.card-title .Safety-score-info a,.card-title .Safety-score-info a:hover,.card-title .Safety-score-info a:focus{ color: #528bfc;cursor: pointer;}
+.safesetting-bx{padding: 10px 20px 20px;text-align: left;}
+.safesetting-con{}
+.listtit{border-bottom:1px solid #eee;padding-bottom: 8px;}
+.listbx{}
+
+
+
+.safe-list .safe-li { height: 72px; line-height: 72px;}
+.safe-li-icon{float: left;width: 20%;}
+
+.safe-list .safe-li a { margin:0px 15px 0 0; color:#656f77;cursor: pointer; text-decoration: none;
+    font-size: 14px; font-weight: normal; text-align: left; }
+.safe-list .safe-li a:hover { color:#528bfc; }
+.safe-list .safe-li a:hover  i { border-color:#528bfc;color: #528bfc; }
+.safe-list .safe-li a span{margin-left: 4px;}
+.safe-list .safe-li i {display: inline-block; width: 40px; height: 40px; line-height: 38px; text-align: center; border: 1px solid #656f77; border-radius: 100%; margin: 0px auto 0px auto; font-size: 22px; vertical-align: middle; }
+.safe-list .safe-li i.icon-shouji{}
+.safe-list .safe-li i.icon-mima{}
+.safe-list .safe-li .on i { color:#528bfc; border:1px solid #528bfc; }
+.safe-list .safe-li .off i { color:#656f77; border:1px solid #656f77; }
+
+.safe-li-info{float: left;width: 80%;border-bottom: 1px solid #f5f5f5;}
+.safe-li-info:after{content: "";clear: both;}
+.safe-li-info .safeinfo{float: left; width: 80%; }
+.safe-li-info .safeinfo:nth-child(1){width: 20%;}
+.safe-li-info .safeinfo:nth-child(2){width: 60%;}
+.safe-li-info .safeinfo:nth-child(3){width: 20%;}
+.safe-Fund-password .safe-li-info .safeinfo:nth-child(2){padding: 12px 0;line-height: 24px;}
+.safe-Fund-password .safe-li-info .safeinfo:nth-child(3){padding: 12px 0;line-height: 24px;}
+.safe-Fund-password .safe-li-info .safeinfo:nth-child(2) span{display: block;}
+.safe-Fund-password .safe-li-info .safeinfo:nth-child(3) a{display: block;}
+
+
+.user_security_page{text-align: left;}
+
+#qcrecharge.table{width: 70%;margin: 0 auto;}
+#qcrecharge.table tr th:nth-child(3){ text-align: center;}
+#qcrecharge.table tr th:last-child{ text-align: center;}
+#qcrecharge.table tbody tr td:nth-child(3){ text-align: right;}
+#qcrecharge.table tbody tr td:last-child{ text-align: center;}
+#qcrecharge.table tbody tr td{ text-align: center;}  
+#qcrecharge.table tr th{ text-align: center;}
+
+
+#nqcrecharge.table tr th{ text-align: center;}
+#nqcrecharge.table tbody tr td:nth-child(2){ text-align: right;}
+#nqcrecharge.table tbody tr td{ text-align: center;}  
+
+#qcwithdrawals.table tr th{ text-align: center;}
+#qcwithdrawals.table tbody tr td:nth-child(3){ text-align: right;}
+#qcwithdrawals.table tbody tr td:nth-child(4){ text-align: right;}
+#qcwithdrawals.table tbody tr td:nth-child(5){ text-align: right;}
+#qcwithdrawals.table tbody tr td{ text-align: center;} 
+
+#withdrawals.table tr th{ text-align: center;}
+#withdrawals.table tbody tr td:nth-child(2){ text-align: right;}
+#withdrawals.table tbody tr td:nth-child(5){ text-align: right;}
+#withdrawals.table tbody tr td{ text-align: center;}  
+
+#billcrecharge.table tr th{ text-align: center;}
+#billcrecharge.table tbody tr td:nth-child(3){ text-align: right;}
+#billcrecharge.table tbody tr td{ text-align: center;} 
+
+#billwithdrawals.table tr th{ text-align: center;}
+#billwithdrawals.table tbody tr td:nth-child(3){ text-align: right;}
+#billwithdrawals.table tbody tr td:nth-child(6){ text-align: right;}
+#billwithdrawals.table tbody tr td{ text-align: center;} 
+
