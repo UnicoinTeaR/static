@@ -188,6 +188,9 @@ $(function(){
 
     $.getCookie = function (name) {
         var value = $.cookie(name);
+        if(null == value){
+            return value;
+        }
         if("token" == name){
             value = value.replace(/^\"|\"$/g,"");
         }
