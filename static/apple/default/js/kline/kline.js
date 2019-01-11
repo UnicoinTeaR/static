@@ -52,131 +52,6 @@ var kline = {
         }
         return obj
     },
-    /*获取用户排名*/
-    userInfo: function () {
-        var isLogin = kline.isLogin();
-        if (isLogin == 'false') {
-            console.info("===================== test =====================");
-            console.info(language["apple.dom.msg97"]);
-            console.info(language["apple.dom.msg12"]);
-            console.info("===================== test =====================");
-            kline.showLoginWinwow(language["apple.dom.msg97"], "/user/login.html", language["apple.dom.msg12"]);
-            return;
-        }
-        $.ajax({
-            type: "get",
-            url: "/v/getVirtualOptionUser.html",
-            dataType: 'json',
-            beforeSend: function (XMLHttpRequest) {
-                XMLHttpRequest.setRequestHeader("token", $.getCookie('token'));
-            },
-            success: function (data) {
-                var code = data.code;
-                if(404 == code){
-                    //说明用户没有注册虚拟钱包
-                    // window.location.href = "/n/virtualApply.html";
-                    //kline.showLoginWinwow(language["apple.dom.msg11"], "/user/login.html", language["apple.dom.msg12"]);
-                }
-                if(401 == code){
-                    //用户失效，请重新登录
-                    kline.showLoginWinwow(language["apple.dom.msg97"], "/user/login.html", language["apple.dom.msg12"]);
-                    return;
-                }
-                if(200 == code){
-                    kline.createUserDom(data);
-                }
-                if(500 == code){
-                    kline.showLoginWinwow(language["comm.error.tips.121"], "", language["comm.error.tips.121"]);
-                    return;
-                }
-            }
-        })
-    },
-    /*获取用户排名*/
-    userInfoTask: function () {
-        //每2秒刷新一次
-        window.setInterval(function () {
-            kline.userInfo();
-        }, 2000);
-    },
-    createUserInfo: function () {
-        $.ajax({
-            type: "get",
-            url: "/v/virtualOptionUser.html",
-            dataType: 'json',
-            beforeSend: function (XMLHttpRequest) {
-                XMLHttpRequest.setRequestHeader("token", $.getCookie('token'));
-            },
-            success: function (data) {
-            }
-        })
-    },
-    //创建用户信息
-    createUserDom: function (data) {
-        var isLogin = kline.isLogin();
-        if (isLogin == 'false') {
-            kline.showLoginWinwow(language["apple.dom.msg11"], "/user/login.html", language["apple.dom.msg12"]);
-            return;
-        }
-        var user= data.data;
-        if(!user.franking) {
-            $("#p_rank").html("暂无排名");
-        }else{
-            $("#p_rank").html(user.franking);
-        }
-
-        if(/^-0\.(0)\d*$/.test(_util.numFormat(user.ftotalBalance, 4))){
-            $("#p_tb").html(0.000);
-        }else{
-            $("#p_tb").html(_util.numFormat(user.ftotalBalance, 4));
-        }
-
-        if(/^-0\.(0)\d*$/.test(_util.numFormat(user.ftotalYieldRate, 4))){
-            $("#p_tyr").html(0.000);
-        }else{
-            $("#p_tyr").html(_util.numFormat(user.ftotalYieldRate, 4));
-        }
-
-        if(/^-0\.(0)\d*$/.test(_util.numFormat(user.fdayYield, 4))){
-            $("#p_dy").html(0.000);
-        }else{
-            $("#p_dy").html(_util.numFormat(user.fdayYield, 4));
-        }
-
-        if(/^-0\.(0)\d*$/.test(_util.numFormat(user.fmouthYieldRate, 4))){
-            $("#p_myr").html(0.000);
-        }else{
-            $("#p_myr").html(_util.numFormat(user.fmouthYieldRate, 4));
-        }
-
-        if(/^-0\.(0)\d*$/.test(_util.numFormat(user.fyearYieldRate, 4))){
-            $("#p_yyr").html(0.000);
-        }else{
-            $("#p_yyr").html(_util.numFormat(user.fyearYieldRate, 4));
-        }
-
-        $("#p_period").html(user.fperiod);
-        if(user.flastUpdateTime[3] <10){
-            user.flastUpdateTime[3] = "0" + user.flastUpdateTime[3];
-        }
-        if(user.flastUpdateTime[4]<10){
-            user.flastUpdateTime[4] = "0" + user.flastUpdateTime[4];
-        }
-        if(user.flastUpdateTime[5]<10){
-            user.flastUpdateTime[5] = "0" + user.flastUpdateTime[5];
-        }
-        if(typeof(user.flastUpdateTime[3]) == "undefined"){
-            user.flastUpdateTime[3] = "00";
-        }
-        if(typeof(user.flastUpdateTime[4]) == "undefined"){
-            user.flastUpdateTime[4] = "00";
-        }
-        if(typeof(user.flastUpdateTime[5]) == "undefined"){
-            user.flastUpdateTime[5] = "00";
-        }
-        $("#p_lastUpdateTime").html(user.flastUpdateTime[0]+"年"+user.flastUpdateTime[1]+"月"+user.flastUpdateTime[2] +"日"
-            +user.flastUpdateTime[3]+"时"+user.flastUpdateTime[4]+"分"+user.flastUpdateTime[5]+"秒");
-    },
     getDepthDom: function (item, widthRatio) {
         var dom = []
         var total = item.price * item.amount;
@@ -356,7 +231,7 @@ var kline = {
         }
         $.ajax({
             type: 'get',
-            url: "/v/getDepthAndSuccessData.html?" + Math.round(Math.random() * 100),
+            url: "/n/getDepthAndSuccessData.html?" + Math.round(Math.random() * 100),
             dataType: 'json',
             data: {
                 symbol: $("#fcode").val()      //变量替换  $("#fcode").val()
@@ -377,7 +252,7 @@ var kline = {
     getRealDepthParam: function () {
         return {
             event: 'addChannel',
-            channel: 'virtual_real_depth',
+            channel: 'real_depth',
             exchangeTypeCode: $("#fcode").val(),
             buysellcount: 100,
             successcount: 100,
@@ -633,7 +508,7 @@ var kline = {
         param.pageSize = 3;
         $.ajax({
             type: 'get',
-            url: "/v/getCurrentEntrust.html",
+            url: "/n/getCurrentEntrust.html",
             dataType: 'json',
             data: param,
             success: function (data) {
@@ -669,7 +544,7 @@ var kline = {
         }
         return {
             event: 'addChannel',
-            channel: 'virtual_entrust',
+            channel: 'entrust',
             symbol: $("#fcode").val(),
             type: kline.currentType,
             tradeType: -1,
@@ -683,7 +558,7 @@ var kline = {
     cancelTrade: function (id) {
         $.ajax({
             type: 'get',
-            url: "/v/trade/cny_cancel.html",
+            url: "/trade/cny_cancel.html",
             dataType: 'json',
             data: {id: id},
             success: function (data) {
@@ -696,7 +571,7 @@ var kline = {
     cancelAllEntrust: function (type) {
         $.ajax({
             type: 'post',
-            url: "/v/trade/cancel_batch_entrust.html",
+            url: "/trade/cancel_batch_entrust.html",
             dataType: 'json',
             data: {type: type, symbol: $("#fcode").val()},//
             success: function (data) {
@@ -725,7 +600,7 @@ var kline = {
         }
         tradePwd = (isopen == "false") ? "" : tradePwd;
         if (kline.tradeType == 0) {
-            url = "/v/trade/cny_buy.html";
+            url = "/trade/cny_buy.html";
             param = {
                 tradeAmount: tradeAmount,
                 tradeCnyPrice: tradePrice,
@@ -734,7 +609,7 @@ var kline = {
                 limited: limited
             }
         } else {
-            url = "/v/trade/cny_sell.html";
+            url = "/trade/cny_sell.html";
             param = {
                 tradeAmount: tradeAmount,
                 tradeCnyPrice: tradePrice,
@@ -838,7 +713,7 @@ var kline = {
         kline.currentCoinName = coin;
         $.ajax({
             type: "post",
-            url: "/v/getAllLastKlineByCoinName.html",
+            url: "/n/getAllLastKlineByCoinName.html",
             dataType: 'json',
             data: {
                 coinName: coin
@@ -863,9 +738,9 @@ var kline = {
             kline.showLoginWinwow(language["apple.dom.msg11"], "/user/login.html", language["apple.dom.msg12"]);
             return;
         }
-        var url = "/v/saveSelfExchangeType.html";
+        var url = "/n/saveSelfExchangeType.html";
         if (isDelete) {
-            url = "/v/removeSelfExchangetype.html";
+            url = "/n/removeSelfExchangetype.html";
         }
         $.ajax({
             type: 'get',
@@ -1290,6 +1165,7 @@ var kline = {
     initKlineTradeing: function () {
         var tradedistrct = $("#tradedistrct").text()
         var index = tradedistrct.indexOf("/")
+
         var leftCur = tradedistrct.slice(0, index)
         var rightCur = tradedistrct.slice(index + 1)
 
@@ -1304,6 +1180,7 @@ var kline = {
         $("#time_price").text(language["apple.dom.msg93"] + "(" + rightCur)
         $("#klineth-amount").text(language["apple.dom.msg27"] + leftCur + ")");
         /*$("#time_amount").text(language["apple.dom.msg27"] + leftCur + ")");*/
+
     },
     kineHeight: function () {
         $(".stock-data-top").css("height", ($(".stock-data").outerHeight() - 285) + "px");
@@ -1322,7 +1199,7 @@ var kline = {
         //获取相关钱包信息。（在不存在该钱包的时候自动为用户创建钱包）
         $.ajax({
             type: 'get',
-            url: "/v/getUserSymbolWallets.html?symbol="+symbol,
+            url: "/n/getUserSymbolWallets.html?symbol="+symbol,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -1342,19 +1219,18 @@ var kline = {
             if (r != null) return r[2]; return null;
         }
         var symbol = getUrlparm('symbol');
-
         //获取相关钱包信息。（在不存在该钱包的时候自动为用户创建钱包）
         $.ajax({
             type: 'get',
-            url: "/v/getIsOptionExchangeType.html?symbol="+symbol,
+            url: "/n/getIsOptionExchangeType.html?symbol="+symbol,
             dataType: 'json',
             async: false,
             success: function (data) {
                 if(200 == data.code){
                     if(data.data.ftype == 1){
-                    $("#qiquanBuy").append('<a id="AqiquanBuy" href="/n/optionVirtualIssueOrRedeem.html?symbol='+symbol+'"><b>发行/赎回</b></a>');
-                    // $("#qiquanSell").append('<a id="AqiquanSell" href="/info/noticelist.html?id='+data.data.fid+'" ><b>合约说明</b></a>');
-                    // $("#chongzhi").append('<a id="AheyueHelp" href="/n/recharge.html?coinid='+data.data.frightcoinid+'" ><b>充值</b></a>');
+                        $("#qiquanBuy").append('<a id="AqiquanBuy" href="/n/optionIssueOrRedeem.html?symbol='+symbol+'"><b>发行/赎回</b></a>');
+                        $("#qiquanSell").append('<a id="AqiquanSell" href="/info/noticelist.html?id='+data.data.fid+'" ><b>合约说明</b></a>');
+                        $("#chongzhi").append('<a id="AheyueHelp" href="/n/recharge.html?coinid='+data.data.frightcoinid+'" ><b>充值</b></a>');
                     }
                 }
             },
@@ -1368,13 +1244,12 @@ var kline = {
 
 
 $(function () {
-    kline.createUserInfo();
     kline.kineHeight();
     /*页面加载执行*/
-    kline.getSymbolWallets();
     kline.getIsOptionExchangeType();
+    kline.getSymbolWallets();
     /*深度*/
-    kline.userInfoTask();
+
     kline.tradeInfo();
 
 

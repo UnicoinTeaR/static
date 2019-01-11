@@ -164,8 +164,8 @@ var uploadTools = {
                     $(boxJsObj).append(fileModel);
                 }else{
                 	//文件大小显示判断
-                    if(fileSizeLimit!=-1&&fileList[i].size>(fileSizeLimit*1024)){
-                        alert("文件上传失败,超出了大小限制！请控制在3M以内!");
+                    if(fileSizeLimit!=-1&&fileList[i].size>(fileSizeLimit*10240)){
+                        alert("文件上传失败,超出了大小限制！请控制在30M以内!");
                         $("#ico_payloading").hide();
                         continue;
                     }
