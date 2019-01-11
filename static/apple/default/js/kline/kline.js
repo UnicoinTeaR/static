@@ -1228,9 +1228,9 @@ var kline = {
             success: function (data) {
                 if(200 == data.code){
                     if(data.data.ftype == 1){
-                        $("#qiquanBuy").append('<a id="AqiquanBuy" href="/n/optionIssueOrRedeem.html?symbol='+symbol+'"><b>发行/赎回</b></a>');
-                        $("#qiquanSell").append('<a id="AqiquanSell" href="/info/noticelist.html?id='+data.data.fid+'" ><b>合约说明</b></a>');
-                        $("#chongzhi").append('<a id="AheyueHelp" href="/n/recharge.html?coinid='+data.data.frightcoinid+'" ><b>充值</b></a>');
+                        $("#qiquanBuy").append('<a id="AqiquanBuy" href="/n/optionIssueOrRedeem.html?symbol='+symbol+'"><b><spring:message code="page.Issue_redemption"/></b></a>');
+                        $("#qiquanSell").append('<a id="AqiquanSell" href="/info/noticelist.html?id='+data.data.fid+'" ><b><spring:message code="page.Contract"/></b></a>');
+                        $("#chongzhi").append('<a id="AheyueHelp" href="/n/recharge.html?coinid='+data.data.frightcoinid+'" ><b><spring:message code="page.top-up"/></b></a>');
                     }
                 }
             },
