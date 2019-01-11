@@ -290,4 +290,7 @@ var language = {
     "apple.dom.msg102":"該期權火熱交易中！",
     "apple.dom.msg103":"期權",
     "apple.dom.msg104":"可發性",
+    "apple.dom.msg105":"充值",
+    "apple.dom.msg106":"合约说明",
+    "apple.dom.msg107":"发行/赎回"
 }

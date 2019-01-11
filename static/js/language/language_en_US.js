@@ -290,4 +290,7 @@ var language = {
     "apple.dom.msg102":"The option is trading hot！",
     "apple.dom.msg103":"option",
     "apple.dom.msg104":"Quantity available",
+    "apple.dom.msg105":"top-up",
+    "apple.dom.msg106":"Contract specification",
+    "apple.dom.msg107":"Issue/redemption"
 }
