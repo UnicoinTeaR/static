@@ -233,7 +233,8 @@ var common={
             success:function(data){
                 if(null == data.data) {
                     $("#virtual_option").hide();
-                }else{
+                }else if ($.getCookie('sdkMode') == null || $.getCookie('sdkMode') == "null" || $.getCookie('sdkMode') == "UNICOIN"){
+
                     $("#virtual_option").show();
                 /*模拟期权交易*/
                 var vodom = common.getOptionVirtualTradeAreaDom(data);

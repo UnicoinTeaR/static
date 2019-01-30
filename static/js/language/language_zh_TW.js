@@ -291,6 +291,16 @@ var language = {
     "apple.dom.msg103":"期權",
     "apple.dom.msg104":"可發性",
     "apple.dom.msg105":"充值",
-    "apple.dom.msg106":"合约说明",
-    "apple.dom.msg107":"发行/赎回"
+    "apple.dom.msg106":"合約說明",
+    "apple.dom.msg107":"發行/贖回",
+
+    // third login
+    "apple.dom.msg108":"登陸成功，您的本平台初始化密碼為:",
+    "apple.dom.msg109":"請確保您已經記下了您的初始化密碼。以後可以直接用該密碼登錄UNICOIN平台！",
+    "apple.dom.msg110":"我已經妥善保管該密碼。",
+
+    // third transfer
+    "apple.dom.msg111":"R網資產劃撥",
+    "apple.dom.msg112":"前往RFINEX设置",
+    "apple.dom.msg113":"用戶登录已经失效，需要去RFINEX重新登录"
 }

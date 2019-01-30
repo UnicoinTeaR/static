@@ -292,5 +292,16 @@ var language = {
     "apple.dom.msg104":"Quantity available",
     "apple.dom.msg105":"top-up",
     "apple.dom.msg106":"Contract specification",
-    "apple.dom.msg107":"Issue/redemption"
+    "apple.dom.msg107":"Issue/redemption",
+
+    // third login
+    "apple.dom.msg108":"The login is successful and your platform initialization password is:",
+    "apple.dom.msg109":"please ensure that you have recorded your initialization password, which can be used directly to log in to UNICOIN platform in the future!",
+    "apple.dom.msg110":"I have kept the password properly.",
+
+    // third transfer
+    "apple.dom.msg111":"RFINEX Asset transfer",
+    "apple.dom.msg112":"go up to RFINEX set",
+    "apple.dom.msg113":"The user login has failed and needs to log in RFINEX again"
+
 }

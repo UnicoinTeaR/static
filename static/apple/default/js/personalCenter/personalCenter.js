@@ -9,8 +9,24 @@ var record = {
     currentType:1,
     currentPage:1
 }
+
+var tab;
+
 var pcenter;
 pcenter = {
+    showLoginWinwowNoCancel: function (content, url, sureText,type) {
+        swal({
+                title: "",
+                text: content,
+                type: type,
+                showCancelButton: false,
+                confirmButtonText: sureText,
+                closeOnConfirm: false
+            },
+            function () {
+                window.location.href = url;
+            });
+    },
     init: function () {
         $(".block-bar-tab li").removeClass('active');
         $("#pcenterLi").addClass('active');
@@ -29,272 +45,365 @@ pcenter = {
         }
     },
     userWwallet: function () {
-        $.ajax({
-            url: "/n/getUserVirtualWalletInfo.html",
+        var flag = false;
+        var loginType;
+        var coins = [];
+        var coinIds = [];
+        //在发起一个ajax
+        myajax = $.ajax({
+            url: "/n/getbindingRRFINEXUser.html",
             type: "post",
             dataType: "json",
-            success: function (data) {
-                if (data.success) {
-                    var dom = [];
-                    var option_dom = [];
-
-                    /*获取当前币种*/
-                    var dropvalue = $('.drop').find('em').text();
-                    pcenter.allfinance = {
-                        cny: data.data.totalCNY,
-                        usd: data.data.totalUSDT,
-                        btc: data.data.totalBTC
-                    };
-                    $.each(data.data.wallets, function (index, item) {
-                        var total = item.ftotal + item.ffrozen + item.flock;
-                        common.discountworth.cny.push({
-                            allworth: item.totalCNY + item.ffrozenCNY + item.flockCNY,
-                            totalworth: item.totalCNY,
-                            frozenworth: item.ffrozenCNY,
-                        })
-                        common.discountworth.usd.push({
-                            allworth: item.totalUSDT + item.ffrozenUSDT + item.flockUSDT,
-                            totalworth: item.totalUSDT,
-                            frozenworth: item.ffrozenUSDT,
-                        })
-                        common.discountworth.btc.push({
-                            allworth: item.totalBTC + item.ffrozenBTC + item.flockBTC,
-                            totalworth: item.totalBTC,
-                            frozenworth: item.ffrozenBTC,
-                        })
-                        if (total == 0) {
-                            dom.push('<div class="tr zeroTr">');
-                        } else {
-                            dom.push('<div class="tr">');
-                        }
-
-                        var isCny=pcenter.isCny(item.fshortname);
-
-                        /*币种*/
-                        dom.push('<div class="td cointTag">');
-                        dom.push('<div class="cell">');
-                        dom.push('<img src="' + item.coinImgUrl + '" class="market-icon">');
-                        dom.push('<b>');
-                        dom.push(item.fshortname);
-                        dom.push('</b>');
-                        dom.push('</div>');
-                        dom.push('</div>');
-
-                        /*总数*/
-                        dom.push('<div class="td total cur-total" >');
-                        dom.push('<div class="cell">');
-
-                        dom.push('<span class="allworth" title=" '+language["apple.dom.msg31"]+' ￥' + common.retainDemical(item.totalCNY + item.ffrozenCNY + item.flockCNY, 4) + '">');
-                        dom.push(_util.numFormat(item.ftotal + item.ffrozen + item.flock, 8));
-                        dom.push('</span>');
-                        dom.push('</div>');
-                        dom.push('</div>');
-
-
-                        /*总资产占比*/
-                        dom.push('<div class="td proportion">');
-                        if (total == 0) {
-                            dom.push('<div class="cell">');
-
-                        } else {
-                            dom.push('<div class="cell hasdata">');
-                        }
-                        if (pcenter.allfinance.cny <= 0 || isNaN(pcenter.allfinance.cny)) {
-                            dom.push(0);
-                        } else {
-                            var propertion = (item.totalCNY + item.ffrozenCNY + item.flockCNY) * 100 / pcenter.allfinance.cny;
-                            if ((propertion.toString().indexOf('E-') != -1) || (propertion.toString().indexOf('e-') != -1)){
-                            	 dom.push(0);
-                            }else{
-                            	 dom.push(common.retainDemical(propertion, 4));
-                            }
-                        }
-
-                        dom.push('</div>');
-                        dom.push('</div>');
-
-                        /*可用*/
-                        dom.push('<div class="td useable">');
-                        dom.push('<div class="cell">');
-                        dom.push('<span class="totalworth" title=" '+language["apple.dom.msg31"]+' ￥' + common.retainDemical(item.totalCNY,4) + '">');
-                        dom.push(common.retainDemical(item.ftotal, 9));
-                        dom.push('</span>');
-                        dom.push('</div>');
-                        dom.push('</div>');
-
-                        /*冻结*/
-                        dom.push('<div class="td frozen">');
-                        dom.push('<div class="cell">');
-                        dom.push('<span class="frozenworth" title=" '+language["apple.dom.msg31"]+' ￥' + common.retainDemical(item.ffrozenCNY,4) + '">');
-                        dom.push(_util.numFormat(item.ffrozen,8));
-                        dom.push('</span>');
-                        dom.push('</div>');
-                        dom.push('</div>');
-
-
-                        /*操作*/
-                        dom.push('<div class="td action">');
-                        dom.push('<div class="cell">');
-                        if(isCny){
-                            window.cnyAlert=function () {
-                                sweetAlert('', language['comm.error.tips.140'], 'error')
-                            }
-                            var alertMessage='javascript:window.cnyAlert();';
-                        	dom.push('<a class="btn btn-primary btn-sm qcc2c" href='+ (($('#frealischeck').val() == "2") ? "/n/c2c.html?coinid="+ item.fcoinid : alertMessage) +'>');
-                    		dom.push(language["apple.dom.msg32"]);
-                            dom.push('</a>');
-                    		dom.push('<a class="qcc2c" href='+ (($('#frealischeck').val() == "2") ? "/n/c2c.html?coinid="+ item.fcoinid : alertMessage) +'>');
-                            dom.push(language["apple.dom.msg33"]);
-                            dom.push('</a>');
-                            dom.push('<a class=""  href="/n/recharge.html?coinid=' + item.fcoinid + '"  >');
-                            dom.push(language["apple.dom.msg34"]);
-                            dom.push('</a>');
-                            dom.push('<a class=""  href="/n/account.html?coinid=' + item.fcoinid + '"   >');
-                            dom.push(language["apple.dom.msg35"]);
-                        }else{
-                            // dom.push('<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-deposit" id="Deposit'+index+'" onclick="pcenter.openRechargeModal('+item.fcoinid+',1)" >');
-                            dom.push('<a class="btn btn-primary btn-sm" href="/n/recharge.html?coinid=' + item.fcoinid + '" >');
-                            dom.push(language["apple.dom.msg32"]);
-                            dom.push('</a>');
-                            dom.push('<a class="" href="/n/withdrawals.html?coinid=' + item.fcoinid + '" >');
-                            // dom.push('<a class="" data-toggle="modal" data-target="#modal-withdrawal" id="Withdrawal'+index+'" onclick="pcenter.openWithdrawModal('+item.fcoinid+',2)" >');
-                            dom.push(language["apple.dom.msg33"]);
-                            dom.push('</a>');
-                            // dom.push('<a class="" data-toggle="modal" data-target="#modal-bills" id="Bills'+index+'" onclick="pcenter.getRecord(1,'+item.fcoinid+')">' );
-                            dom.push('<a class=""  href="/n/bill.html?coinid=' + item.fcoinid + '"  >');
-                            dom.push(language["apple.dom.msg34"]);
-                            dom.push('</a>');
-                            dom.push('<a class=""  href="/n/account.html?coinid=' + item.fcoinid + '"   >');
-                            // dom.push('<a class="" data-toggle="modal" data-target="#modal-address" id="WithdrawalAddress'+index+'" onclick="pcenter.openAddressModal('+item.fcoinid+')">' );
-                            dom.push(language["apple.dom.msg35"]);
-                        }
-                        dom.push('</a>');
-                        dom.push('</div>');
-                        dom.push('</div>');
-                        dom.push('</div>');
-                    })
-
-                    $("#tbody-wallets").html(dom.join(""))
-                    var allproportion = 0;
-                    var lastvalue   //最后一个值
-                    if($(".hasdata").length<=0){
-                        lastvalue=0
-                    }else if($(".hasdata").length==1){
-                        lastvalue=$(".hasdata").text()*1000;
-                        lastvalue=lastvalue/1000
-                    }else{
-                        $(".hasdata").each(function (index, item) {
-                            if (index < $(".hasdata").length - 1) {
-                                allproportion += $(this).text() * 1000
-                                $(this).text($(this).text())
-                            }
-                        });
-                        lastvalue=100 - allproportion/1000;
+            beforeSend: function (XMLHttpRequest) {
+                XMLHttpRequest.setRequestHeader("token", $.getCookie('token'));
+            },
+            success: function(data){
+                if(data.code == 200) {
+                    //做事情
+                    logintype = data.data.loginType;
+                    coins = data.data.coins;
+                    for ( var i = 0; i <coins.length; i++){
+                        coinIds.push(coins[i].fcoinid);
                     }
-                    lastvalue = lastvalue.toFixed(3);
-                    $(".hasdata").last().text(lastvalue);
+                    //0-需要重新登录R网，1-进入资产划拨页面
+                    if(logintype == 0){
+                        loginType = 0;
+                        flag = true;
+                    }else if(logintype == 1){
+                        //资产划拨
+                        loginType = 1;
+                        flag = true;
+                    }
 
-                    $(".proportion").each(function () {
-                        $(this).text($(this).text() + "%")
-                    })
+                }else {
 
-                    $("#nowfinance").text(common.retainDemical(pcenter.allfinance.cny, 4));
-
-                    //生成期权钱包数据
-                    $.each(data.data.optionWallets, function (index, item) {
-                        var total = item.ftotal + item.ffrozen + item.flock;
-
-                        if (total == 0) {
-                            option_dom.push('<div class="tr zeroTr">');
-                        } else {
-                            option_dom.push('<div class="tr">');
-                        }
-
-                        /*币种*/
-                        option_dom.push('<div class="td cointTag">');
-                        option_dom.push('<div class="cell">');
-                        option_dom.push('<b>');
-                        option_dom.push(item.fshortname);
-                        option_dom.push('</b>');
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-
-                        /*总数*/
-                        option_dom.push('<div class="td total cur-total" >');
-                        option_dom.push('<div class="cell">');
-
-                        option_dom.push('<span class="allworth">');
-                        option_dom.push(_util.numFormat(item.ftotal + item.ffrozen + item.flock, 8));
-                        option_dom.push('</span>');
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-
-
-                        /*可赎回量*/
-                        option_dom.push('<div class="td redeemable">');
-                        if (item.fredeemable == 0) {
-                            option_dom.push('<div class="cell">');
-                        } else {
-                            option_dom.push('<div class="cell hasdata">');
-                        }
-                        option_dom.push(common.retainDemical(item.fredeemable, 9));
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-
-                        /*可用*/
-                        option_dom.push('<div class="td useable">');
-                        option_dom.push('<div class="cell">');
-                        option_dom.push('<span class="totalworth" >');
-                        option_dom.push(common.retainDemical(item.ftotal, 9));
-                        option_dom.push('</span>');
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-
-                        /*冻结*/
-                        option_dom.push('<div class="td frozen">');
-                        option_dom.push('<div class="cell">');
-                        option_dom.push('<span class="frozenworth" >');
-                        option_dom.push(common.retainDemical(item.ffrozen, 9));
-                        option_dom.push('</span>');
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-
-                        /*操作*/
-                        option_dom.push('<div class="td action">');
-                        option_dom.push('<div class="cell">');
-                        option_dom.push('<span class="td cointTag" style="align-content: center">');
-                        if (item.disable){
-                            option_dom.push(language["apple.dom.msg101"]);
-                        }else {
-                            option_dom.push(language["apple.dom.msg102"]);
-                        }
-
-                        option_dom.push('</span>');
-                        // dom.push('<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-deposit" id="Deposit'+index+'" onclick="pcenter.openRechargeModal('+item.fcoinid+',1)" >');
-                        // option_dom.push('<a class="btn btn-primary btn-sm" href="/n/recharge.html?coinid=' + item.fcoinid + '" >');
-                        // option_dom.push(language["apple.dom.msg32"]);
-                        // option_dom.push('</a>');
-                        // option_dom.push('<a class="" data-toggle="modal" href="/n/withdrawals.html?coinid=' + item.fcoinid + '" >');
-                        // dom.push('<a class="" data-toggle="modal" data-target="#modal-withdrawal" id="Withdrawal'+index+'" onclick="pcenter.openWithdrawModal('+item.fcoinid+',2)" >');
-                        // option_dom.push(language["apple.dom.msg33"]);
-                        // option_dom.push('</a>');
-                        // dom.push('<a class="" data-toggle="modal" data-target="#modal-bills" id="Bills'+index+'" onclick="pcenter.getRecord(1,'+item.fcoinid+')">' );
-                        // option_dom.push('<a class="" data-toggle="modal" href="/n/bill.html?coinid=' + item.fcoinid + '"  >');
-                        // option_dom.push(language["apple.dom.msg34"]);
-                        // option_dom.push('</a>');
-                        // option_dom.push('<a class="" data-toggle="modal" href="/n/account.html?coinid=' + item.fcoinid + '"   >');
-                        // dom.push('<a class="" data-toggle="modal" data-target="#modal-address" id="WithdrawalAddress'+index+'" onclick="pcenter.openAddressModal('+item.fcoinid+')">' );
-                        // option_dom.push(language["apple.dom.msg35"]);
-                        // option_dom.push('</a>');
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-                        option_dom.push('</div>');
-                    });
-
-                    $("#tbody-option-wallets").html(option_dom.join(""))
                 }
             }
         })
+
+        $.when(myajax).done(function () {
+            //要执行的操作
+            $.ajax({
+                url: "/n/getUserVirtualWalletInfo.html",
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        var dom = [];
+                        var option_dom = [];
+
+                        /*获取当前币种*/
+                        var dropvalue = $('.drop').find('em').text();
+                        pcenter.allfinance = {
+                            cny: data.data.totalCNY,
+                            usd: data.data.totalUSDT,
+                            btc: data.data.totalBTC
+                        };
+                        $.each(data.data.wallets, function (index, item) {
+                            var total = item.ftotal + item.ffrozen + item.flock;
+                            common.discountworth.cny.push({
+                                allworth: item.totalCNY + item.ffrozenCNY + item.flockCNY,
+                                totalworth: item.totalCNY,
+                                frozenworth: item.ffrozenCNY,
+                            })
+                            common.discountworth.usd.push({
+                                allworth: item.totalUSDT + item.ffrozenUSDT + item.flockUSDT,
+                                totalworth: item.totalUSDT,
+                                frozenworth: item.ffrozenUSDT,
+                            })
+                            common.discountworth.btc.push({
+                                allworth: item.totalBTC + item.ffrozenBTC + item.flockBTC,
+                                totalworth: item.totalBTC,
+                                frozenworth: item.ffrozenBTC,
+                            })
+                            if (total == 0) {
+                                dom.push('<div class="tr zeroTr">');
+                            } else {
+                                dom.push('<div class="tr">');
+                            }
+
+                            var isCny=pcenter.isCny(item.fshortname);
+
+                            /*币种*/
+                            dom.push('<div class="td cointTag">');
+                            dom.push('<div class="cell">');
+                            dom.push('<img src="' + item.coinImgUrl + '" class="market-icon">');
+                            dom.push('<b>');
+                            dom.push(item.fshortname);
+                            dom.push('</b>');
+                            dom.push('</div>');
+                            dom.push('</div>');
+
+                            /*总数*/
+                            dom.push('<div class="td total cur-total" >');
+                            dom.push('<div class="cell">');
+
+                            dom.push('<span class="allworth" title=" '+language["apple.dom.msg31"]+' ￥' + common.retainDemical(item.totalCNY + item.ffrozenCNY + item.flockCNY, 4) + '">');
+                            dom.push(_util.numFormat(item.ftotal + item.ffrozen + item.flock, 8));
+                            dom.push('</span>');
+                            dom.push('</div>');
+                            dom.push('</div>');
+
+
+                            /*总资产占比*/
+                            dom.push('<div class="td proportion">');
+                            if (total == 0) {
+                                dom.push('<div class="cell">');
+
+                            } else {
+                                dom.push('<div class="cell hasdata">');
+                            }
+                            if (pcenter.allfinance.cny <= 0 || isNaN(pcenter.allfinance.cny)) {
+                                dom.push(0);
+                            } else {
+                                var propertion = (item.totalCNY + item.ffrozenCNY + item.flockCNY) * 100 / pcenter.allfinance.cny;
+                                if ((propertion.toString().indexOf('E-') != -1) || (propertion.toString().indexOf('e-') != -1)){
+                                    dom.push(0);
+                                }else{
+                                    dom.push(common.retainDemical(propertion, 4));
+                                }
+                            }
+
+                            dom.push('</div>');
+                            dom.push('</div>');
+
+                            /*可用*/
+                            dom.push('<div class="td useable">');
+                            dom.push('<div class="cell">');
+                            dom.push('<span class="totalworth" title=" '+language["apple.dom.msg31"]+' ￥' + common.retainDemical(item.totalCNY,4) + '">');
+                            dom.push(common.retainDemical(item.ftotal, 9));
+                            dom.push('</span>');
+                            dom.push('</div>');
+                            dom.push('</div>');
+
+                            /*冻结*/
+                            dom.push('<div class="td frozen">');
+                            dom.push('<div class="cell">');
+                            dom.push('<span class="frozenworth" title=" '+language["apple.dom.msg31"]+' ￥' + common.retainDemical(item.ffrozenCNY,4) + '">');
+                            dom.push(_util.numFormat(item.ffrozen,8));
+                            dom.push('</span>');
+                            dom.push('</div>');
+                            dom.push('</div>');
+
+
+                            /*操作*/
+                            dom.push('<div class="td action">');
+                            dom.push('<div class="cell">');
+
+
+
+
+                            if(isCny){
+                                window.cnyAlert=function () {
+                                    sweetAlert('', language['comm.error.tips.140'], 'error')
+                                }
+                                var alertMessage='javascript:window.cnyAlert();';
+
+                                //循环遍历可以支持R网划拨的币种
+                                for ( var i = 0; i <coins.length; i++){
+                                    if(coins[i].fcoinid == item.fcoinid){
+                                        if(flag &&  loginType == 1){
+                                            //资产划拨
+                                            dom.push('<a class="btn btn-primary btn-sm" onclick="pcenter.getTransferWindows('+item.fcoinid+')">');
+                                            dom.push(language["apple.dom.msg111"]);
+                                            dom.push("</a>");
+                                        }if(flag &&  loginType == 0){
+                                            //需要重新登陸
+                                            dom.push('<a class="btn btn-primary btn-sm" onclick="pcenter.transferFail()">');
+                                            dom.push(language["apple.dom.msg111"]);
+                                            dom.push("</a>");
+                                        }
+                                        break;
+                                    }
+                                }
+                                //当前币不是支持R网划拨的币种,为了排版整齐设置空的div
+                                if(!coinIds.includes(item.fcoinid)) {
+                                    dom.push('<div style="margin-right:10px;width: 100px;background:red;display:inline-block"></div>');
+                                }
+
+
+                                dom.push('<a class="btn btn-primary btn-sm qcc2c" href='+ (($('#frealischeck').val() == "2") ? "/n/c2c.html?coinid="+ item.fcoinid : alertMessage) +'>');
+                                dom.push(language["apple.dom.msg32"]);
+                                dom.push('</a>');
+                                dom.push('<a class="qcc2c" href='+ (($('#frealischeck').val() == "2") ? "/n/c2c.html?coinid="+ item.fcoinid : alertMessage) +'>');
+                                dom.push(language["apple.dom.msg33"]);
+                                dom.push('</a>');
+                                dom.push('<a class=""  href="/n/recharge.html?coinid=' + item.fcoinid + '"  >');
+                                dom.push(language["apple.dom.msg34"]);
+                                dom.push('</a>');
+                                dom.push('<a class=""  href="/n/account.html?coinid=' + item.fcoinid + '"   >');
+                                dom.push(language["apple.dom.msg35"]);
+                                dom.push('</a>');
+                            }else{
+                                //循环遍历可以支持R网划拨的币种
+                                for ( var i = 0; i <coins.length; i++){
+                                    if(coins[i].fcoinid == item.fcoinid){
+                                        if(flag &&  loginType == 1){
+                                            //资产划拨
+                                            dom.push('<a class="btn btn-primary btn-sm" onclick="pcenter.getTransferWindows('+item.fcoinid+')">');
+                                            dom.push(language["apple.dom.msg111"]);
+                                            dom.push("</a>");
+                                        }if(flag &&  loginType == 0){
+                                            //需要重新登陸
+                                            dom.push('<a class="btn btn-primary btn-sm" onclick="pcenter.transferFail()">');
+                                            dom.push(language["apple.dom.msg111"]);
+                                            dom.push("</a>");
+                                        }
+                                        break;
+                                    }
+                                }
+                                 //当前币不是支持R网划拨的币种,为了排版整齐设置空的div
+                                if(!coinIds.includes(item.fcoinid)) {
+                                    dom.push('<div style="margin-right:10px;width: 100px;background:red;display:inline-block"></div>');
+                                }
+
+                                // dom.push('<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-deposit" id="Deposit'+index+'" onclick="pcenter.openRechargeModal('+item.fcoinid+',1)" >');
+                                dom.push('<a class="btn btn-primary btn-sm" href="/n/recharge.html?coinid=' + item.fcoinid + '" >');
+                                dom.push(language["apple.dom.msg32"]);
+                                dom.push('</a>');
+                                dom.push('<a class="" href="/n/withdrawals.html?coinid=' + item.fcoinid + '" >');
+                                // dom.push('<a class="" data-toggle="modal" data-target="#modal-withdrawal" id="Withdrawal'+index+'" onclick="pcenter.openWithdrawModal('+item.fcoinid+',2)" >');
+                                dom.push(language["apple.dom.msg33"]);
+                                dom.push('</a>');
+                                // dom.push('<a class="" data-toggle="modal" data-target="#modal-bills" id="Bills'+index+'" onclick="pcenter.getRecord(1,'+item.fcoinid+')">' );
+                                dom.push('<a class=""  href="/n/bill.html?coinid=' + item.fcoinid + '"  >');
+                                dom.push(language["apple.dom.msg34"]);
+                                dom.push('</a>');
+                                dom.push('<a class=""  href="/n/account.html?coinid=' + item.fcoinid + '"   >');
+                                // dom.push('<a class="" data-toggle="modal" data-target="#modal-address" id="WithdrawalAddress'+index+'" onclick="pcenter.openAddressModal('+item.fcoinid+')">' );
+                                dom.push(language["apple.dom.msg35"]);
+                                dom.push('</a>');
+                            }
+                            dom.push('</a>');
+                            dom.push('</div>');
+                            dom.push('</div>');
+                            dom.push('</div>');
+                        })
+
+                        $("#tbody-wallets").html(dom.join(""))
+                        var allproportion = 0;
+                        var lastvalue   //最后一个值
+                        if($(".hasdata").length<=0){
+                            lastvalue=0
+                        }else if($(".hasdata").length==1){
+                            lastvalue=$(".hasdata").text()*1000;
+                            lastvalue=lastvalue/1000
+                        }else{
+                            $(".hasdata").each(function (index, item) {
+                                if (index < $(".hasdata").length - 1) {
+                                    allproportion += $(this).text() * 1000
+                                    $(this).text($(this).text())
+                                }
+                            });
+                            lastvalue=100 - allproportion/1000;
+                        }
+                        lastvalue = lastvalue.toFixed(3);
+                        $(".hasdata").last().text(lastvalue);
+
+                        $(".proportion").each(function () {
+                            $(this).text($(this).text() + "%")
+                        })
+
+                        $("#nowfinance").text(common.retainDemical(pcenter.allfinance.cny, 4));
+
+                        //生成期权钱包数据
+                        $.each(data.data.optionWallets, function (index, item) {
+                            var total = item.ftotal + item.ffrozen + item.flock;
+
+                            if (total == 0) {
+                                option_dom.push('<div class="tr zeroTr">');
+                            } else {
+                                option_dom.push('<div class="tr">');
+                            }
+
+                            /*币种*/
+                            option_dom.push('<div class="td cointTag">');
+                            option_dom.push('<div class="cell">');
+                            option_dom.push('<b>');
+                            option_dom.push(item.fshortname);
+                            option_dom.push('</b>');
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+
+                            /*总数*/
+                            option_dom.push('<div class="td total cur-total" >');
+                            option_dom.push('<div class="cell">');
+
+                            option_dom.push('<span class="allworth">');
+                            option_dom.push(_util.numFormat(item.ftotal + item.ffrozen + item.flock, 8));
+                            option_dom.push('</span>');
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+
+
+                            /*可赎回量*/
+                            option_dom.push('<div class="td redeemable">');
+                            if (item.fredeemable == 0) {
+                                option_dom.push('<div class="cell">');
+                            } else {
+                                option_dom.push('<div class="cell hasdata">');
+                            }
+                            option_dom.push(common.retainDemical(item.fredeemable, 9));
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+
+                            /*可用*/
+                            option_dom.push('<div class="td useable">');
+                            option_dom.push('<div class="cell">');
+                            option_dom.push('<span class="totalworth" >');
+                            option_dom.push(common.retainDemical(item.ftotal, 9));
+                            option_dom.push('</span>');
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+
+                            /*冻结*/
+                            option_dom.push('<div class="td frozen">');
+                            option_dom.push('<div class="cell">');
+                            option_dom.push('<span class="frozenworth" >');
+                            option_dom.push(common.retainDemical(item.ffrozen, 9));
+                            option_dom.push('</span>');
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+
+                            /*操作*/
+                            option_dom.push('<div class="td action">');
+                            option_dom.push('<div class="cell">');
+                            option_dom.push('<span class="td cointTag" style="align-content: center">');
+                            if (item.disable){
+                                option_dom.push(language["apple.dom.msg101"]);
+                            }else {
+                                option_dom.push(language["apple.dom.msg102"]);
+                            }
+
+                            option_dom.push('</span>');
+                            // dom.push('<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-deposit" id="Deposit'+index+'" onclick="pcenter.openRechargeModal('+item.fcoinid+',1)" >');
+                            // option_dom.push('<a class="btn btn-primary btn-sm" href="/n/recharge.html?coinid=' + item.fcoinid + '" >');
+                            // option_dom.push(language["apple.dom.msg32"]);
+                            // option_dom.push('</a>');
+                            // option_dom.push('<a class="" data-toggle="modal" href="/n/withdrawals.html?coinid=' + item.fcoinid + '" >');
+                            // dom.push('<a class="" data-toggle="modal" data-target="#modal-withdrawal" id="Withdrawal'+index+'" onclick="pcenter.openWithdrawModal('+item.fcoinid+',2)" >');
+                            // option_dom.push(language["apple.dom.msg33"]);
+                            // option_dom.push('</a>');
+                            // dom.push('<a class="" data-toggle="modal" data-target="#modal-bills" id="Bills'+index+'" onclick="pcenter.getRecord(1,'+item.fcoinid+')">' );
+                            // option_dom.push('<a class="" data-toggle="modal" href="/n/bill.html?coinid=' + item.fcoinid + '"  >');
+                            // option_dom.push(language["apple.dom.msg34"]);
+                            // option_dom.push('</a>');
+                            // option_dom.push('<a class="" data-toggle="modal" href="/n/account.html?coinid=' + item.fcoinid + '"   >');
+                            // dom.push('<a class="" data-toggle="modal" data-target="#modal-address" id="WithdrawalAddress'+index+'" onclick="pcenter.openAddressModal('+item.fcoinid+')">' );
+                            // option_dom.push(language["apple.dom.msg35"]);
+                            // option_dom.push('</a>');
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+                            option_dom.push('</div>');
+                        });
+
+                        $("#tbody-option-wallets").html(option_dom.join(""))
+                    }
+                }
+            })
+        });
+
+
     },
     openDepositModal: function (fcoinid, recordType) {
         var param = {
@@ -1075,7 +1184,66 @@ pcenter = {
     getRecordByType: function (page) {
         // page = record.currentPage;
         pcenter.getRecord(record.currentType, $("#symbol").val(), page);
+    },
+    transferFail: function (){
+        pcenter.showLoginWinwowNoCancel("", "https://rfinex.com/", language["apple.dom.msg113"],"error");
+    },
+
+
+    getTransferWindows :function (coinId) {
+        $("#fcoinid").val(coinId);
+        $("#fcoinid2").val(coinId);
+        tab = layer.tab({
+            area: ['600px', '300px'],
+            tab: [{
+                title: '充值ֵ',
+                scrollbar: true,
+                content: $(".tab1").html()
+            }, {
+                title: '提现',
+                scrollbar: true,
+                content: $(".tab2").html()
+            }, {
+                title: '资产划拨记录',
+                scrollbar: true,
+                content: ' '
+            }],
+            success: function(el) {
+                $(el).find('.layui-layer-title span').eq(2).on('click', function() {
+                        $.ajax({
+                            url : '/n/getTransferRFINEXByUser.html?fcoinid='+coinId,
+                            type : 'post',
+                            success: function(data){
+                                var dom = "";
+                                $(".layui-layer-tabli").eq(2).html(dom)
+                                var data = jQuery.parseJSON(data);
+                                if(data.code == 200){
+                                    for(var i = 0;i<data.data.length;i++){
+                                        dom += '<div class="list-li">';
+                                        dom+='<p>';
+                                        dom+='<span class="timeSpan">申请时间:'+data.data[i].createDate+'</span>';
+                                        dom+='<span class="fr redColor">状态:'+(data.data[i].status == 0 ? "划拨失败" : (data.data[i].status == 1 ? "正在划拨中" : "划拨成功"))+'</span>';
+                                        dom+='</p>';
+                                        dom+='<p>';
+                                        dom+='<span>金额:'+data.data[i].amount+'</span>';
+                                        dom+='<span class="fr">类型:'+(data.data[i].fType == 0 ? "充值" : "提现")+'</span>';
+                                        dom+='</p>';
+                                        dom+='</div>';
+                                    }
+                                    $(".layui-layer-tabli").eq(2).html(dom)
+                                }else{
+                                    layer.msg('暂无数据');
+                                }
+                            }
+                        });
+
+                })
+            }
+
+        });
     }
+
+
 };
 $(function(){
     pcenter.userWwallet();
@@ -1166,7 +1334,6 @@ $(function(){
         $(".f-cny").removeClass('active')
         $(".f-btc").addClass('active')
     })
-
 
 
 
@@ -1310,7 +1477,63 @@ $(function(){
     $("#addressAddButton").on("click", function() {
         window.setTimeout(function(){pcenter.addCoinAddress();},Math.floor(Math.random()*300));
     });
-})
+
+        //监听提交
+        layui.use('form', function() {
+            var form = layui.form;
+            // 充值立即提交
+            form.on('submit(formDemo1)', function(data) {
+                $.ajax({
+                    url : '/n/transferByRFINEX.html',
+                    type : 'post',
+                    dataType : 'json',
+                    contentType : 'application/json',
+                    data :JSON.stringify(data.field),
+                    success: function(data){
+                        if(data.data.code != 1000){
+                            layer.close(tab)
+                            pcenter.showLoginWinwowNoCancel(data.data.msg, "https://rfinex.com/", language["apple.dom.msg112"],"error");
+                        }else{
+                            layer.msg('请求成功');
+                        }
+                    }
+                });
+
+                return false;
+            });
+            // 提现立即提交
+            form.on('submit(formDemo2)', function(data) {
+                $.ajax({
+                    url : '/n/transferByRFINEX.html',
+                    type : 'post',
+                    dataType : 'json',
+                    contentType : 'application/json',
+                    data :JSON.stringify(data.field),
+                    success: function(data){
+                        if(data.data.code != 1000){
+                            layer.close(tab)
+                            pcenter.showLoginWinwowNoCancel(data.data.msg, "https://rfinex.com/", language["apple.dom.msg112"],"error");
+                        }else{
+                            layer.msg('请求成功');
+                        }
+                    }
+                });
+                return false;
+            });
+            //效验输入的金额的
+            form.verify({
+                price: function(value, item) {
+                    var re=/(?!^0*(\.0{1,2})?$)^\d{1,13}(\.\d{1,8})?$/;
+                    if( re.exec(value) == null){
+                        return '请输入正确的价格'
+                    }
+                }
+            });
+
+        });
+    })
+
+
 
 
 
