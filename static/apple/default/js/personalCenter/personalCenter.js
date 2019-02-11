@@ -1494,6 +1494,7 @@ $(function(){
                             layer.close(tab)
                             pcenter.showLoginWinwowNoCancel(data.data.msg, "https://rfinex.com/", language["apple.dom.msg112"],"error");
                         }else{
+                            layer.close(tab);
                             layer.msg('请求成功');
                         }
                     }
@@ -1514,6 +1515,7 @@ $(function(){
                             layer.close(tab)
                             pcenter.showLoginWinwowNoCancel(data.data.msg, "https://rfinex.com/", language["apple.dom.msg112"],"error");
                         }else{
+                            layer.close(tab);
                             layer.msg('请求成功');
                         }
                     }

@@ -85,8 +85,6 @@ var header = {
             //返回UNICOIN
             $("#return-unicoin").hide(100);
 
-
-
         } else {
             //所有都隐藏
             // alert("隐藏！" + thirdApp)
@@ -113,9 +111,7 @@ var header = {
 
 $(function () {
 
-    //初始化header栏
-    header.sdkMode();
-    header.hideOther();
+
     /*页面加载执行，获取用户资产信息*/
     common.personalMarket();
     //初始化头部交易区信息
@@ -126,6 +122,10 @@ $(function () {
 
     /*判断是否登录 显示登录注册还是用户名*/
     header.isShowLoginInfo();
+
+    //初始化header栏
+    header.sdkMode();
+    header.hideOther();
 
     var name = "未登录访客";
     if ($('#floginname').val() != "") {
